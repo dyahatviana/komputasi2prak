@@ -13,11 +13,12 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: REGISTRY_CREDENTIALS, usernameVariable: 'USER', passwordVariable: 'PASS')]) { 
           bat """ 
           docker login -u %USER% -p %PASS%
-          docker push ayaacvia/simple-app:9
+          docker push ayaacvia/simple-app
           """
         } 
       } 
     } 
   } 
 }
+
 
