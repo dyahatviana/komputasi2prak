@@ -2,12 +2,12 @@ pipeline {
   agent any
   environment {
     IMAGE_NAME = 'ayaacvia/simple-app' 
+    REGISTRY = 'https://index.docker.io/v1/'
     REGISTRY_CREDENTIALS = 'dockerhub-credentials'
   }
   stages {
     stage('Checkout') {
-      steps {
-        checkout scm
+      steps {checkout scm
       }
     }
     stage('Build') {
@@ -33,4 +33,5 @@ pipeline {
   }
 
 }
+
 
