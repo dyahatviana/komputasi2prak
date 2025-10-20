@@ -11,12 +11,13 @@ pipeline {
     stage('Push Docker Image') { 
       steps { 
         withCredentials([usernamePassword(credentialsId: REGISTRY_CREDENTIALS, usernameVariable: 'USER', passwordVariable: 'PASS')]) { 
-          bat 'docker login -u %USER% -p %PASS%' 
-          bat "docker push %IMAGE_NAME%:%BUILD_NUMBER%" 
-          bat "docker tag %IMAGE_NAME%:%BUILD_NUMBER% %IMAGE_NAME%:latest" 
-          bat "docker push %IMAGE_NAME%:latest" 
+          bat """ 
+          docker login -u %USER% -p %PASS%
+          docker push ayaacvia/simple-app:9
+          """
         } 
       } 
     } 
   } 
 }
+
